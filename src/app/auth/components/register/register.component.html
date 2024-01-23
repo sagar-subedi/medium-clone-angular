@@ -7,6 +7,7 @@
           <a routerLink="/login">Have an account?</a>
         </p>
         BACKEND ERRORS HERE
+        <p>isSubmitting: {{ isSubmitting$ | async }}</p>
         <form [formGroup]="form" (ngSubmit)="onSubmit()">
           <fieldset class="form-group">
             <input
@@ -32,7 +33,11 @@
               formControlName="password"
             />
           </fieldset>
-          <button type="submit" class="btn btn-lg btn-primary pull-xs-right">
+          <button
+            [disabled]="isSubmitting$ | async"
+            type="submit"
+            class="btn btn-lg btn-primary pull-xs-right"
+          >
             Sign Up
           </button>
         </form>
