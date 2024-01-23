@@ -8,6 +8,8 @@ import {isDevMode} from '@angular/core'
 import {authFeatureKey, authReducer} from './app/auth/store/reducer'
 import {CommonModule} from '@angular/common'
 import {provideHttpClient} from '@angular/common/http'
+import {provideEffects} from '@ngrx/effects'
+import * as authEffects from './app/auth/store/effects'
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -16,6 +18,7 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(),
     CommonModule,
     provideState(authFeatureKey, authReducer),
+    provideEffects(authEffects),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
