@@ -6,11 +6,15 @@ import {provideState, provideStore} from '@ngrx/store'
 import {provideStoreDevtools} from '@ngrx/store-devtools'
 import {isDevMode} from '@angular/core'
 import {authFeatureKey, authReducer} from './app/auth/store/reducer'
+import {CommonModule} from '@angular/common'
+import {provideHttpClient} from '@angular/common/http'
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
     provideStore(),
+    provideHttpClient(),
+    CommonModule,
     provideState(authFeatureKey, authReducer),
     provideStoreDevtools({
       maxAge: 25,
