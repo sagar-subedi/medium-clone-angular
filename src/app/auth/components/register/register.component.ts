@@ -4,19 +4,28 @@ import {Store} from '@ngrx/store'
 import {authActions} from '../../store/actions'
 import {RegisterRequestInterface} from '../../types/registerRequest.interface'
 import {RouterLink} from '@angular/router'
-import {selectIsSubmitting} from '../../store/reducer'
-import {AuthStateInterface} from '../../types/authState.interface'
+import {selectIsSubmitting, selectValidationErrors} from '../../store/reducer'
 import {CommonModule} from '@angular/common'
 import {AuthService} from '../../services/auth.service'
+import {combineLatest} from 'rxjs'
+import {BackendErrorMessages} from 'src/app/shared/components/backendErrorMessages.component'
 
 @Component({
   selector: 'mc-register',
   templateUrl: './register.component.html',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [
+    ReactiveFormsModule,
+    RouterLink,
+    CommonModule,
+    BackendErrorMessages,
+  ],
 })
 export class RegisterComponent {
-  isSubmitting$ = this.store.select(selectIsSubmitting)
+  data$ = combineLatest({
+    isSubmitting: this.store.select(selectIsSubmitting),
+    backendErrors: this.store.select(selectValidationErrors),
+  })
 
   form = this.fb.nonNullable.group({
     username: ['', Validators.required],
