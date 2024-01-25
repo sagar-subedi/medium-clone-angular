@@ -7,18 +7,23 @@ import {provideStoreDevtools} from '@ngrx/store-devtools'
 import {isDevMode} from '@angular/core'
 import {authFeatureKey, authReducer} from './app/auth/store/reducer'
 import {CommonModule} from '@angular/common'
-import {provideHttpClient} from '@angular/common/http'
+import {provideHttpClient, withInterceptors} from '@angular/common/http'
 import {provideEffects} from '@ngrx/effects'
 import * as authEffects from './app/auth/store/effects'
+import {provideRouterStore, routerReducer} from '@ngrx/router-store'
+import {authInterceptor} from './app/shared/services/authInterceptor'
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(appRoutes),
-    provideStore(),
-    provideHttpClient(),
+    provideStore({
+      router: routerReducer,
+    }),
+    provideHttpClient(withInterceptors([authInterceptor])),
     CommonModule,
     provideState(authFeatureKey, authReducer),
     provideEffects(authEffects),
+    provideRouterStore(),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode(),
