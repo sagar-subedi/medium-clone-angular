@@ -1,5 +1,5 @@
 import {Component} from '@angular/core'
-import {FeedComponent} from 'src/app/shared/feed/feed.component'
+import {FeedComponent} from 'src/app/shared/components/feed/feed.component'
 
 @Component({
   selector: 'mc-global-feed',
