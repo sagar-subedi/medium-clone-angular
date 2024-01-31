@@ -30,5 +30,5 @@ export const {
   reducer: feedReducer,
   selectIsLoading,
   selectError,
-  selectData: selectData,
+  selectData: selectFeedData,
 } = feedFeature
