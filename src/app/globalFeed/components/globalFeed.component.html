@@ -1,0 +1,14 @@
+<div class="home-page">
+  <mc-banner></mc-banner>
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-9">
+        <mc-feed-toggler (toggleFieldEvent)="toggleFeedHandler($event)"></mc-feed-toggler>
+        <mc-feed *ngIf="currentFeed == 'global'" [apiUrl]="apiUrl"></mc-feed>
+        <mc-feed *ngIf="currentFeed == 'home'" [apiUrl]="apiUrl+'/feed'"></mc-feed>
+      </div>
+      <div class="col-md-3"><mc-popular-tags></mc-popular-tags></div>
+    </div>
+  </div>
+</div>
+  

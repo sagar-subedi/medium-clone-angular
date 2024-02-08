@@ -6,7 +6,7 @@ import {RouterLink} from '@angular/router'
 import {selectIsSubmitting, selectValidationErrors} from '../../store/reducer'
 import {CommonModule} from '@angular/common'
 import {combineLatest} from 'rxjs'
-import {BackendErrorMessages} from 'src/app/shared/components/backendErrorMessages.component'
+import {BackendErrorMessages} from 'src/app/shared/components/backendErrorMessages/backendErrorMessages.component'
 import {LoginRequestInterface} from '../../types/loginRequest.interface'
 
 @Component({

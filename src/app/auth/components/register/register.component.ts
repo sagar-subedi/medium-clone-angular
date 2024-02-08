@@ -8,7 +8,7 @@ import {selectIsSubmitting, selectValidationErrors} from '../../store/reducer'
 import {CommonModule} from '@angular/common'
 import {AuthService} from '../../services/auth.service'
 import {combineLatest} from 'rxjs'
-import {BackendErrorMessages} from 'src/app/shared/components/backendErrorMessages.component'
+import {BackendErrorMessages} from 'src/app/shared/components/backendErrorMessages/backendErrorMessages.component'
 
 @Component({
   selector: 'mc-register',
