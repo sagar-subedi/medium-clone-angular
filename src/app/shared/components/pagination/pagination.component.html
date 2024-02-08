@@ -1,11 +1,13 @@
-<ul class="pagination">
-  <li
-    *ngFor="let page of pages"
-    class="page-item"
-    [ngClass]="{active: currentPage === page}"
-  >
-    <a [routerLink]="url" class="page-link" [queryParams]="{page: page}">{{
-      page
-    }}</a>
-  </li>
-</ul>
+<ng-container *ngIf="data$ | async as data">
+  <ul class="pagination">
+    <li
+      *ngFor="let page of pages"
+      class="page-item"
+      [ngClass]="{active: currentPage === page}"
+    >
+      <a [routerLink]="url" class="page-link" [queryParams]="{page: page}">{{
+        page
+      }}</a>
+    </li>
+  </ul>
+</ng-container>
