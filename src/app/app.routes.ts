@@ -17,6 +17,13 @@ export const appRoutes: Route[] = [
       import('src/app/globalFeed/globalFeed.routes').then((m) => m.routes),
   },
   {
+    path: 'articles/new',
+    loadChildren: () =>
+      import('src/app/createArticle/createArticle.routes').then(
+        (m) => m.routes
+      ),
+  },
+  {
     path: 'articles/:slug',
     loadChildren: () =>
       import('src/app/article/article.routes').then((m) => m.routes),

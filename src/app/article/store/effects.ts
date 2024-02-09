@@ -31,11 +31,7 @@ export const articleEffects = createEffect(
 )
 
 export const deleteArticleEffects = createEffect(
-  (
-    actions$ = inject(Actions),
-    articleService = inject(ArticleService),
-    router = inject(Router)
-  ) => {
+  (actions$ = inject(Actions), articleService = inject(ArticleService)) => {
     return actions$.pipe(
       ofType(articleActions.deleteArticle),
       switchMap((deleteArticle) => {
