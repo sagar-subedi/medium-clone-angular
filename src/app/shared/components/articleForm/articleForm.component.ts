@@ -39,7 +39,7 @@ export class ArticleFormComponent implements OnInit {
       title: this.initialValues.title,
       description: this.initialValues.description,
       body: this.initialValues.body,
-      tagList: this.initialValues.taglist.join(' '),
+      tagList: this.initialValues.tagList.join(' '),
     })
   }
 
@@ -47,7 +47,7 @@ export class ArticleFormComponent implements OnInit {
     const formValue = this.form.getRawValue()
     const articleFormValues: ArticleFormValuesInterface = {
       ...formValue,
-      taglist: formValue.tagList.split(' '),
+      tagList: formValue.tagList.split(' '),
     }
     this.articleSubmit.emit(articleFormValues)
   }

@@ -19,7 +19,7 @@ export class CreateArticleComponent {
     title: '',
     description: '',
     body: '',
-    taglist: [],
+    tagList: [],
   }
 
   data$ = combineLatest({
