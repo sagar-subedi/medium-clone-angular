@@ -1,9 +1,11 @@
 import {inject} from '@angular/core'
 import {Actions, createEffect, ofType} from '@ngrx/effects'
 import {articleActions} from './actions'
-import {catchError, map, of, switchMap} from 'rxjs'
+import {catchError, map, of, switchMap, tap} from 'rxjs'
 import {ArticleService as SharedArticleService} from 'src/app/shared/services/article.service'
 import {Article} from 'src/app/shared/types/article.interface'
+import {ArticleService} from '../services/article.service'
+import {Router} from '@angular/router'
 
 export const articleEffects = createEffect(
   (
@@ -25,5 +27,29 @@ export const articleEffects = createEffect(
   },
   {
     functional: true,
+  }
+)
+
+export const deleteArticleEffects = createEffect(
+  (
+    actions$ = inject(Actions),
+    articleService = inject(ArticleService),
+    router = inject(Router)
+  ) => {
+    return actions$.pipe(
+      ofType(articleActions.deleteArticle),
+      switchMap((deleteArticle) => {
+        //can use ({slug}) to directly access slug below
+        return articleService.deleteArticle(deleteArticle.slug).pipe(
+          map(() => articleActions.deleteArticleSuccess()),
+          tap(() => router.navigateByUrl('/')),
+          catchError(() => of(articleActions.deleteArticleFailure()))
+        )
+      })
+    )
+  },
+  {
+    functional: true,
+    dispatch: false,
   }
 )

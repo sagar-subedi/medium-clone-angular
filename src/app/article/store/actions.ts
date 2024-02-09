@@ -7,5 +7,9 @@ export const articleActions = createActionGroup({
     'Get Article': props<{slug: string}>(),
     'Get Article Success': props<{article: Article}>(),
     'Get Article Failure': emptyProps(),
+
+    'Delete Article': props<{slug: string}>(),
+    'Delete Article Success': emptyProps(),
+    'Delete Article Failure': emptyProps(),
   },
 })

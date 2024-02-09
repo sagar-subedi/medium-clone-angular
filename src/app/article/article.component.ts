@@ -57,5 +57,7 @@ export class ArticleComponent implements OnInit {
 
   editArticle() {}
 
-  deleteArticle() {}
+  deleteArticle() {
+    this.store.dispatch(articleActions.deleteArticle({slug: this.slug}))
+  }
 }
