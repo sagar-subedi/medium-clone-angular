@@ -5,7 +5,7 @@ import {catchError, map, of, switchMap} from 'rxjs'
 import {ArticleService as SharedArticleService} from 'src/app/shared/services/article.service'
 import {Article} from 'src/app/shared/types/article.interface'
 
-export const globalFeedEffects = createEffect(
+export const articleEffects = createEffect(
   (
     actions$ = inject(Actions),
     sharedArticleService = inject(SharedArticleService)
