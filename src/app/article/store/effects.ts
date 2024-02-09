@@ -42,9 +42,22 @@ export const deleteArticleEffects = createEffect(
         //can use ({slug}) to directly access slug below
         return articleService.deleteArticle(deleteArticle.slug).pipe(
           map(() => articleActions.deleteArticleSuccess()),
-          tap(() => router.navigateByUrl('/')),
           catchError(() => of(articleActions.deleteArticleFailure()))
         )
+      })
+    )
+  },
+  {
+    functional: true,
+  }
+)
+
+export const redirectEffect = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(articleActions.deleteArticleSuccess),
+      tap(() => {
+        router.navigateByUrl('/')
       })
     )
   },
