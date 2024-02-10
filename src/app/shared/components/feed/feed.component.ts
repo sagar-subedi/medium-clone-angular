@@ -9,6 +9,7 @@ import {LoadingComponent} from '../loading/loading.component'
 import {PaginationComponent} from '../pagination/pagination.component'
 import {feedActions} from './store/actions'
 import {selectError, selectFeedData, selectIsLoading} from './store/reducers'
+import {AddToFavoritesComponent} from '../addToFavorites/addToFavorites.component'
 
 @Component({
   selector: 'mc-feed',
@@ -20,6 +21,7 @@ import {selectError, selectFeedData, selectIsLoading} from './store/reducers'
     ErrorMessageComponent,
     LoadingComponent,
     PaginationComponent,
+    AddToFavoritesComponent,
   ],
 })
 export class FeedComponent implements OnInit {
